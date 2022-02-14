@@ -5,10 +5,9 @@ $UserName="root";
 $UserPassCode="";
 $Mydb="eMobilis";
 
-
 //create the connection
 //variable for the connection
-$Connect= new mysqli($ServerName,$UserName,$UserPassCode);
+$Connect= new mysqli($ServerName,$UserName,$UserPassCode,$Mydb);
 
 //Check connection
 if ($Connect->connect_error){
@@ -16,27 +15,18 @@ if ($Connect->connect_error){
 } else
     echo "Connected Successfully";
 
-////create a database
-//$sqlcreate="CREATE DATABASE eMobilisTable";
-//
-//if ($Connect->query($sqlcreate)===TRUE) {
-//    echo "Database $sqlcreate created Successfully";
-//} else {
-//    echo "Failed to create $sqlcreate db, check syntax";
-//}
-//$Connect->close();
-
-//create a table
 
 $createtable="CREATE TABLE Credit (
-    No INT (10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    FIRST name VARCHAR (50) NOT NULL,
+    id int (10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    firstname VARCHAR (50) NOT NULL,
+    email varchar (50)
 )";
 
-if ($Mydb->query($createtable)===TRUE) {
-    echo "Database $createtable created Successfully";
+if ($Connect->query($createtable) === TRUE) {
+    echo "Table Credit created successfully";
 } else {
-    echo "Failed to create $createtable table, check syntax";
+    echo "Error creating table:";
 }
-$Connect->close();  //
+$Connect->close();
 
+?>
