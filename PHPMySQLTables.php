@@ -2,8 +2,8 @@
 //Variable for the Server
 $ServerName="localhost";
 $UserName="root";
-$UserPassCode="";
-$Mydb="eMobilis";
+$UserPassCode="";                    //specify the value for variable $UserPassCode.
+$Mydb="eMobilis";                    //specify which bd where the table will be created.
 
 //create the connection
 //variable for the connection
@@ -15,13 +15,14 @@ if ($Connect->connect_error){
 } else
     echo "Connected Successfully";
 
-
-$createtable="CREATE TABLE Credit (
+//name of the table to create in the database named emobilis
+$createtable="CREATE TABLE Credit (  
     id int (10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     firstname VARCHAR (50) NOT NULL,
     email varchar (50)
 )";
 
+//Check if the table (Credit) was created
 if ($Connect->query($createtable) === TRUE) {
     echo "Table Credit created successfully";
 } else {
